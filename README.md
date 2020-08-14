@@ -3,6 +3,7 @@ XSS Payloads collection for testing web application during an engagement
 
 ## Payloads for 2020 - Some updates
 Extracted from https://netsec.expert/2020/02/01/xss-in-2020.html (Awesome work)
+
 *SVG*
 ```javascript
 <svg/onload=alert(1)><svg>
